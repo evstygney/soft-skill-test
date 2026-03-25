@@ -67,6 +67,7 @@ npm run content:export-csv
 
 ## Основные документы
 
+- Короткий порядок работы: [content-workflow.md](/C:/Users/evstygney/Documents/Контент-план/psyvit-soft-skills-simulator/docs/content-workflow.md)
 - Инструкция по редактированию: [kak-redaktirovat-kontent.md](/C:/Users/evstygney/Documents/Контент-план/psyvit-soft-skills-simulator/docs/kak-redaktirovat-kontent.md)
 - Редакторский пакет в Markdown: [redakturnyy-paket-simulyatora.md](/C:/Users/evstygney/Documents/Контент-план/psyvit-soft-skills-simulator/docs/redakturnyy-paket-simulyatora.md)
 - Редакторский пакет в CSV: [redakturnyy-paket-simulyatora.csv](/C:/Users/evstygney/Documents/Контент-план/psyvit-soft-skills-simulator/docs/redakturnyy-paket-simulyatora.csv)
