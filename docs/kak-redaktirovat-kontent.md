@@ -101,6 +101,12 @@ npm run content:import-csv
 npm run content:import-csv -- path/to/file.csv
 ```
 
+Если нужно пересобрать редакторский CSV из текущего состояния JSON:
+
+```bash
+npm run content:export-csv
+```
+
 ### Что обновляет импорт из CSV
 
 - сцены;
@@ -123,6 +129,13 @@ npm run content:import-csv -- path/to/file.csv
 - метаданные сайта;
 - ссылки `links.home` и `links.course`;
 - часть служебных подписей кнопок и секций, которых нет в CSV.
+
+## Рекомендуемый рабочий цикл
+
+1. Редактор правит [redakturnyy-paket-simulyatora.csv](/C:/Users/evstygney/Documents/Контент-план/psyvit-soft-skills-simulator/docs/redakturnyy-paket-simulyatora.csv).
+2. Вы выполняете `npm run content:import-csv`.
+3. Проверяете интерфейс и `npm run build`.
+4. Если после ручных JSON-правок нужно заново синхронизировать редакторский файл, выполняете `npm run content:export-csv`.
 
 ## Как проверить после правки
 

@@ -10,6 +10,7 @@
 - `data/site-content.json` — welcome-экран, страница программы, CTA-тексты и ссылки.
 - `data/scenarios.ts` и `data/site-content.ts` — тонкие обертки над JSON для типизированного импорта в приложение.
 - `scripts/import-editorial-csv.mjs` — импорт редакторского CSV обратно в JSON проекта.
+- `scripts/export-editorial-csv.mjs` — экспорт актуального JSON обратно в редакторский CSV.
 - `docs/` — редакторские материалы и инструкции.
 
 ## Как запустить
@@ -56,6 +57,12 @@ npm run content:import-csv
 
 ```bash
 npm run content:import-csv -- path/to/file.csv
+```
+
+Экспорт актуальных JSON обратно в CSV:
+
+```bash
+npm run content:export-csv
 ```
 
 ## Основные документы

@@ -6,6 +6,7 @@
     "dev": "next dev",
     "reset-dev": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"if (Test-Path .next) { Remove-Item -Recurse -Force .next }; next dev\"",
     "content:import-csv": "node scripts/import-editorial-csv.mjs",
+    "content:export-csv": "node scripts/export-editorial-csv.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
