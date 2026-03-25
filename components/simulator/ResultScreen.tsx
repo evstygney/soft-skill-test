@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { siteContent } from "@/data/site-content";
 import { getStyleShare } from "@/lib/simulator";
 import { CommunicationStyle, ResultEvidenceItem, StyleProfile, StyleScoreMap } from "@/types/simulator";
 
@@ -30,6 +31,7 @@ export function ResultScreen({
   courseLink,
   onRestart
 }: ResultScreenProps) {
+  const content = siteContent.result;
   const nuanceText = closeResult
     ? `У вас не плоский профиль: ведущий стиль — ${styleLabels[primaryStyle]}, но рядом заметно проявляется и ${styleLabels[secondaryStyle].toLowerCase()} паттерн.`
     : `Ведущий стиль — ${styleLabels[primaryStyle]}. Вторым по силе у вас идет ${styleLabels[secondaryStyle].toLowerCase()} паттерн.`;
@@ -115,30 +117,25 @@ export function ResultScreen({
           </article>
 
           <article className="rounded-[28px] border border-ink/10 bg-ink p-6 text-white">
-            <div className="text-xs uppercase tracking-[0.22em] text-white/55">Следующий шаг</div>
-            <h3 className="mt-3 font-serif text-3xl leading-none">Теперь это можно не просто понять, а перестроить</h3>
-            <p className="mt-4 max-w-2xl text-sm leading-6 text-white/78">
-              Программа ПСИвИт по мягким навыкам переводит этот вывод в практику: как говорить о
-              неудобном, держать границы, давать обратную связь и не проваливаться ни в уступчивость,
-              ни в жесткую защиту.
-            </p>
+            <div className="text-xs uppercase tracking-[0.22em] text-white/55">{content.nextStepEyebrow}</div>
+            <h3 className="mt-3 font-serif text-3xl leading-none">{content.nextStepTitle}</h3>
+            <p className="mt-4 max-w-2xl text-sm leading-6 text-white/78">{content.nextStepText}</p>
             <div className="mt-5 flex flex-col gap-3 sm:flex-row">
               <Link
                 href={courseLink}
                 className="inline-flex items-center justify-center rounded-full bg-white px-6 py-4 text-sm font-semibold text-ink transition hover:bg-sand"
               >
-                Посмотреть программу
+                {content.primaryButton}
               </Link>
               <button
                 type="button"
                 onClick={onRestart}
                 className="rounded-full border border-white/20 bg-white/10 px-6 py-4 text-sm font-semibold text-white transition hover:bg-white/20"
               >
-                Пройти заново
+                {content.restartButton}
               </button>
             </div>
           </article>
-
         </div>
       </div>
     </section>

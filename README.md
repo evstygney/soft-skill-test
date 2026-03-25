@@ -1,26 +1,31 @@
-# PSYvIT Soft Skills Simulator
+# ПСИвИт — симулятор мягких навыков
 
-MVP интерактивного симулятора сложных разговоров для прогрева и продажи обучения PSYvIT.
+Локальный MVP интерактивного симулятора сложных разговоров для ПСИвИт.
 
 ## Что внутри
 
-- `app/` — App Router, layout, страница и глобальные стили.
-- `components/simulator/` — UI-экраны и stateful-контейнер симулятора.
-- `data/scenarios.ts` — 5 сценариев, тексты ответов, профили результатов и ссылка на курс.
-- `lib/simulator.ts` — логика подсчета очков и определения доминирующего стиля.
-- `types/simulator.ts` — типы для сценариев, профилей и score map.
+- `app/` — страницы, layout и глобальные стили.
+- `components/simulator/` — экраны симулятора и клиентская логика прохождения.
+- `data/simulator-content.json` — сценарии, варианты ответов, веса и профили результата.
+- `data/site-content.json` — welcome-экран, страница программы, CTA-тексты и ссылки.
+- `data/scenarios.ts` и `data/site-content.ts` — тонкие обертки над JSON для типизированного импорта в приложение.
+- `scripts/import-editorial-csv.mjs` — импорт редакторского CSV обратно в JSON проекта.
+- `docs/` — редакторские материалы и инструкции.
 
-## Как запустить локально
-
-1. Установите Node.js 20+.
-2. В папке проекта выполните:
+## Как запустить
 
 ```bash
 npm install
 npm run dev
 ```
 
-3. Откройте [http://localhost:3000](http://localhost:3000).
+Открыть: [http://localhost:3000](http://localhost:3000)
+
+Если dev-кэш Next.js сломался:
+
+```bash
+npm run reset-dev
+```
 
 ## Как собрать билд
 
@@ -29,23 +34,39 @@ npm run build
 npm run start
 ```
 
-## Что менять, если нужно править контент
+## Как теперь редактировать контент
 
-- Сценарии и варианты ответов: `data/scenarios.ts`
-- Тексты профилей результата: `data/scenarios.ts`
-- Ссылка кнопки на курс: `data/scenarios.ts` (`courseLink`)
-- Общая оболочка и sequencing экранов: `components/simulator/SimulatorApp.tsx`
-- Визуальный стиль: `app/globals.css` и `tailwind.config.ts`
+### Вариант 1. Править напрямую в JSON
 
-## Продуктовая логика MVP
+- Сценарии, ответы, веса и профили: [simulator-content.json](/C:/Users/evstygney/Documents/Контент-план/psyvit-soft-skills-simulator/data/simulator-content.json)
+- Тексты экранов и ссылки кнопок: [site-content.json](/C:/Users/evstygney/Documents/Контент-план/psyvit-soft-skills-simulator/data/site-content.json)
 
-- 5 рабочих сцен.
+### Вариант 2. Править в CSV и импортировать обратно
+
+Редакторский CSV:
+- [redakturnyy-paket-simulyatora.csv](/C:/Users/evstygney/Documents/Контент-план/psyvit-soft-skills-simulator/docs/redakturnyy-paket-simulyatora.csv)
+
+Импорт:
+
+```bash
+npm run content:import-csv
+```
+
+Если CSV лежит в другом месте:
+
+```bash
+npm run content:import-csv -- path/to/file.csv
+```
+
+## Основные документы
+
+- Инструкция по редактированию: [kak-redaktirovat-kontent.md](/C:/Users/evstygney/Documents/Контент-план/psyvit-soft-skills-simulator/docs/kak-redaktirovat-kontent.md)
+- Редакторский пакет в Markdown: [redakturnyy-paket-simulyatora.md](/C:/Users/evstygney/Documents/Контент-план/psyvit-soft-skills-simulator/docs/redakturnyy-paket-simulyatora.md)
+- Редакторский пакет в CSV: [redakturnyy-paket-simulyatora.csv](/C:/Users/evstygney/Documents/Контент-план/psyvit-soft-skills-simulator/docs/redakturnyy-paket-simulyatora.csv)
+
+## Логика MVP
+
+- 20 рабочих сцен.
 - 3 стиля коммуникации: `avoiding`, `defensive`, `mature`.
-- Каждый ответ добавляет очки стилю.
-- При равенстве побеждает более зрелый стиль: `mature` > `defensive` > `avoiding`.
-
-## Идеи для развития
-
-- Подключить события аналитики на старт, выбор каждого ответа, получение результата, клик по CTA.
-- Добавить захват лида перед экраном CTA или после результата.
-- Сделать ветвящиеся сценарии и отраслевые подборки.
+- Каждый ответ добавляет очки одному стилю и увеличивает счетчик выбора этого паттерна.
+- Итоговый профиль считается по очкам, затем по количеству выборов.

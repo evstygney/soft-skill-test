@@ -2,6 +2,7 @@
 
 import { startTransition, useState } from "react";
 
+import { siteContent } from "@/data/site-content";
 import { courseLink, scenarios } from "@/data/scenarios";
 import { getEvidenceItems, getStyleAssessment, getStyleProfile } from "@/lib/simulator";
 import { ProgressBar } from "./ProgressBar";
@@ -65,13 +66,13 @@ export function SimulatorApp() {
       <div className="mx-auto flex min-h-[calc(100vh-2rem)] max-w-6xl flex-col justify-center gap-6">
         <header className="flex items-center justify-between px-1">
           <div>
-            <div className="text-xs uppercase tracking-[0.24em] text-ink/50">ПСИвИт</div>
+            <div className="text-xs uppercase tracking-[0.24em] text-ink/50">{siteContent.brand.name}</div>
             <div className="mt-2 font-serif text-2xl leading-none text-ink sm:text-3xl">
-              Симулятор мягких навыков
+              {siteContent.brand.simulatorTitle}
             </div>
           </div>
           <div className="hidden rounded-full border border-ink/10 bg-white/65 px-4 py-2 text-xs text-ink/60 sm:block">
-            Диагностика и предложение программы
+            {siteContent.brand.simulatorBadge}
           </div>
         </header>
 

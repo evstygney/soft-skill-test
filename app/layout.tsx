@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 
+import { siteContent } from "@/data/site-content";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -15,9 +16,8 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "ПСИвИт — симулятор мягких навыков",
-  description:
-    "Интерактивный симулятор сложных разговоров: короткая диагностика стиля общения и мягкий переход в обучение ПСИвИт."
+  title: siteContent.metadata.title,
+  description: siteContent.metadata.description
 };
 
 export default function RootLayout({
